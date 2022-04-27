@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  startDate: 2022-04-26 22:41:27
+  name: MyString
+  tee_time_window: MyText
+  course: one
+
+two:
+  startDate: 2022-04-26 22:41:27
+  name: MyString
+  tee_time_window: MyText
+  course: two

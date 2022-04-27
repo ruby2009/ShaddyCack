@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  yardage: MyString
+  difficulty: 1
+  nickname: MyString
+  about_text: MyText
+  course: one
+
+two:
+  yardage: MyString
+  difficulty: 1
+  nickname: MyString
+  about_text: MyText
+  course: two
