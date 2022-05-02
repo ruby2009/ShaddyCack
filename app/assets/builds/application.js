@@ -8781,7 +8781,6 @@
   var import_inputmask = __toESM(require_inputmask());
   var annual_form_controller_default = class extends Controller {
     numberTargetConnected() {
-      console.log(this, "fuck yo couch");
       (0, import_inputmask.default)({ "mask": "999-999-9999" }).mask(this.numberTarget);
     }
   };
