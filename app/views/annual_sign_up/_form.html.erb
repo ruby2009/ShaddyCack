@@ -1,0 +1,25 @@
+<%= form_with model: player, class: "text-center text-2xl", id: "#{dom_id(player)}_form" do |form| %>
+
+  <% if errors.any? %>
+    <div id="error_explanation" class="bg-orange-50 text-red-500 p-3 mx-3 font-medium rounded-lg mt-3">
+      <ul>
+        <% errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="w-full py-3">
+    <%= form.text_field :name, placeholder: "Name", class: "bg-orange-50 rounded pl-2" %>
+  </div>
+
+  <div class="w-full pb-3">
+    <%= form.text_field :phone_number, placeholder: "Phone Number", class: "bg-orange-50 rounded pl-2", id: "phone", "data-annual-form-target" => "number" %>
+  </div>
+
+  <%= form.hidden_field :event_id, :value => @event.id %>
+
+  <%= form.button "Sign Up", class: "py-3 text-xl font-bold text-orange-50 bg-[#9F9563] my-3 p-2 rounded-lg shadow-md shadow-orange-50/40 border-b-4 border-orange-50" %>
+<% end %>

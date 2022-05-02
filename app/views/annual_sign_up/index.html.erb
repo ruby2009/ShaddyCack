@@ -1,0 +1,32 @@
+<h1 class="text-3xl text-center pt-8 font-bold" style="text-shadow: 2px 1px 0px #212121; color: #076652;">"A Tradition Like All the Others"</h1>
+
+<div class="logo w-full">
+  <%= image_tag("Removal-58", class: "mx-auto") %>
+</div>
+
+<div class="date-location-header text-orange-50 text-center my-3 py-5" style="background: #076652;">
+  <div class="w-full text-2xl font-bold">
+    <%= @event.name %>
+  </div>
+  <div class="w-full text-xl">
+    <%= @event.startDate.to_time.strftime('%B %e, %Y') %>
+  </div>
+  <div class="w-full text-xl">
+    <%= @event.course.name %>
+  </div>
+</div>
+
+<div class="py-5">
+  <h2 class="pl-3 text-slate-700 text-xl font-bold">How it works:</h2>
+  <div class="rules">
+    <ul class="text-slate-700 text-md font-bold list-disc list-outside pl-8 mb-3">
+      <li>Texted scorecard day before the event</li>
+      <li>Play anytime Friday</li>
+      <li>Follow along with live leaderboards</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sign-up-form pt-5 h-screen" style="background: #076652;" data-controller="annual-form">
+  <%= render "form", player: Player.new, errors: [] %>
+</div>

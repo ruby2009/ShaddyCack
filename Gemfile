@@ -48,6 +48,11 @@ gem "bootsnap", require: false
 # Replaces factories in tests
 gem "factory_bot"
 
+# Tailwind gem for css
+gem "tailwindcss-rails"
+
+gem "foreman"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

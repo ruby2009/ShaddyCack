@@ -96,6 +96,7 @@ GEM
     erubi (1.10.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
+    foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -213,6 +214,10 @@ GEM
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     strscan (3.0.1)
+    tailwindcss-rails (2.0.8-x86_64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.8-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.2.0)
     turbo-rails (1.0.1)
@@ -247,6 +252,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   factory_bot
+  foreman
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
@@ -258,6 +264,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails
   turbo-rails
   tzinfo-data
   web-console
