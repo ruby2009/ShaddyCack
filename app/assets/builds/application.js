@@ -8786,16 +8786,8 @@
   };
   __publicField(annual_form_controller_default, "targets", ["number"]);
 
-  // app/javascript/controllers/hello_controller.js
-  var hello_controller_default = class extends Controller {
-    connect() {
-      this.element.textContent = "Hello World!";
-    }
-  };
-
   // app/javascript/controllers/index.js
   application.register("annual-form", annual_form_controller_default);
-  application.register("hello", hello_controller_default);
 })();
 /*!
  * dist/inputmask

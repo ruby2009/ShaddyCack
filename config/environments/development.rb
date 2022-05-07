@@ -64,6 +64,8 @@ Rails.application.configure do
   config.assets.compile = true
   config.assets.digest = false
 
+  config.default_url_options = { host: "localhost" }
+
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

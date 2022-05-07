@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_28_013514) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_03_003501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,8 +51,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_28_013514) do
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "player_event_id", null: false
     t.index ["event_id"], name: "index_player_event_holes_on_event_id"
     t.index ["hole_id"], name: "index_player_event_holes_on_hole_id"
+    t.index ["player_event_id"], name: "index_player_event_holes_on_player_event_id"
     t.index ["player_id"], name: "index_player_event_holes_on_player_id"
   end
 
@@ -77,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_28_013514) do
   add_foreign_key "holes", "courses"
   add_foreign_key "player_event_holes", "events"
   add_foreign_key "player_event_holes", "holes"
+  add_foreign_key "player_event_holes", "player_events"
   add_foreign_key "player_event_holes", "players"
   add_foreign_key "player_events", "events"
   add_foreign_key "player_events", "players"
