@@ -1,0 +1,15 @@
+<div class="text-center m-1 p-2">
+  <% if locals[:previous_hole] %>
+    <%= link_to "←", player_event_hole_path(locals[:previous_hole].id), method: "get", class: "text-7xl inline-block font-bold p-3", style: "text-shadow: 2px 1px 0px #212121; color: #076652;" %>
+  <% else %>
+    <span class="text-7xl inline-block font-bold p-3 text-gray-200">←</span>
+  <% end %>
+  <span class="text-7xl inline-block mx-5" style="text-shadow: 2px 1px 0px #212121; color: #076652;">
+    <%= locals[:current_hole].number %>
+  </span>
+  <% if locals[:next_hole] %>
+    <%= link_to "→", player_event_hole_path(locals[:next_hole].id), method: "get", class: "text-7xl inline-block font-bold p-3", style: "text-shadow: 2px 1px 0px #212121; color: #076652;" %>
+  <% else %>
+    <span class="text-7xl inline-block font-bold p-3 text-gray-200">→</span>
+  <% end %>
+</div>

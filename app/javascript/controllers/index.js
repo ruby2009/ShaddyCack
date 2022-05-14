@@ -5,7 +5,7 @@
 import { application } from './application'
 
 import AnnualFormController from './annual_form_controller.js'
+import TopNavController from './top_nav_controller.js'
 
-import HelloController from './hello_controller.js'
 application.register('annual-form', AnnualFormController)
-application.register('hello', HelloController)
+application.register('top-nav', TopNavController)

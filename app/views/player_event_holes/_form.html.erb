@@ -1,0 +1,9 @@
+<%= form_with model: @player_event_hole, class: "text-center text-2xl my-3", id: "#{dom_id(player_event_hole)}_form" do |form| %>
+  <div class="w-full py-3">
+    <%= form.number_field :score,
+      in: 1..10,
+      placeholder: "0",
+      class: "bg-orange-100 rounded p-4 text-3xl text-center shadow-inner",
+      onchange: "this.form.requestSubmit()" %>
+  </div>
+<% end %>

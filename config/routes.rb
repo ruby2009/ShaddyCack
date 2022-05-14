@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "annual_sign_up#index"
   resources :players, only: [:create]
+  resources :scorecards, only: [:show]
+  resources :player_event_holes, only: [:index, :show, :edit, :update]
 end

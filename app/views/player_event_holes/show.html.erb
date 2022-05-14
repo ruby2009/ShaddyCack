@@ -1,0 +1,24 @@
+<turbo-frame id="scorecard_hole">
+  <%= render "scorecard_hole_nav", locals: { previous_hole: @previous_hole, current_hole: @player_event_hole.hole, next_hole: @next_hole } %>
+
+  <div class="hole-info pl-6 py-3 text-orange-50 border-y-4 border-[#9F9563]" style="background: #076652;">
+    <div class="text-2xl text-bold">
+      <span><%= @player_event_hole.hole.nickname %></span> 
+      <span class="text-xl italic"> - Par <%= @player_event_hole.hole.par %></span>
+    </div>
+
+    <div class="text xl">
+      <%= @player_event_hole.hole.yardage %> yards
+    </div>
+
+  </div>
+
+  <turbo-frame id="scorecard_hole_form">
+    <%= render "form", player_event_hole: @player_event_hole %>
+  </turbo-frame>
+
+  <div class="content-center py-3 h-screen border-t-4 border-[#9F9563]" style="background: #076652;">
+    <%= turbo_stream_from "hole_leaderboard" %>
+    <%= render "leaderboard", locals: { player_event_hole: @player_event_hole } %>
+  </div>
+</turbo-frame>

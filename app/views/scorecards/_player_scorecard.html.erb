@@ -1,0 +1,36 @@
+<% if local_assigns[:hole_ids] %>
+  <% new_holes = PlayerEventHole.where(id: local_assigns[:hole_ids]).includes(:hole).order("holes.number") %>
+<% end %>
+
+<% holes = local_assigns[:hole_ids] ? new_holes : locals[:holes] %>
+
+<div id="player_scorecard">
+  <table class="table-fixed mx-auto text-center border-2 border-[#076652]">
+    <tbody>
+      <tr id="hole_numbers" class="bg-[#076652] text-orange-50 border-2 border-[#076652]">
+        <% holes.each do |hole| %>
+          <td class="w-1/12 border-r-2 border-orange-50"><%= hole.hole.number %></td>
+        <% end %>
+        <td class="w-1/12"></td>
+      </tr>
+      <tr id="hole_yardage" class="bg-orange-100 border-2 border-[#076652]">    
+        <% holes.each do |hole| %>
+          <td class="w-1/12 border-r-2 border-[#076652]"><%= hole.hole.yardage %></td>
+        <% end %> 
+        <td class="w-1/12"></td>   
+      </tr>
+      <tr id="scores" class="border-2 border-[#076652] font-bold">
+        <% holes.each do |hole| %>
+          <td class="w-1/12 border-r-2 border-[#076652]"><%= hole.score %></td>
+        <% end %>
+        <td class="w-1/12"><%= holes.where(hole_complete: true).map(&:score).sum %></td>
+      </tr>
+      <tr id="over_par" class="border-2 border-[#076652] italic">
+        <% holes.each do |hole| %>
+          <td class="w-1/12 border-r-2 border-[#076652]"><%= score_decorator(hole.over_par) %></td>
+        <% end %>
+        <td class="w-1/12"><%= score_decorator(holes.where(hole_complete: true).map(&:over_par).sum) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
