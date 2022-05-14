@@ -1,0 +1,25 @@
+<% player_event = local_assigns[:player_event] ? local_assigns[:player_event] : locals[:player_event] %>
+<div id="event_leaders">
+  <table class="table-auto bg-orange-50 mx-auto border-collapse w-4/5">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Thru</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody class="text-xl">
+      <% player_event.event_leaders.each_with_index do |leader, i| %>
+        <% if i == 0 || i.even? %>
+          <tr class="bg-orange-100">
+        <% else %>
+          <tr>
+        <% end %>
+          <td class="px-2"><%= leader.player.name %></td>
+          <td class="px-2 text-center"><%= leader.completed_holes %></td>
+          <td class="px-2 text-right"><%= score_decorator(leader.strokes_to_par) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

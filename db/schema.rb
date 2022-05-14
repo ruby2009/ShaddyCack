@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_03_003501) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_12_220841) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_03_003501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "player_event_id", null: false
+    t.boolean "hole_complete"
+    t.integer "over_par"
     t.index ["event_id"], name: "index_player_event_holes_on_event_id"
     t.index ["hole_id"], name: "index_player_event_holes_on_hole_id"
     t.index ["player_event_id"], name: "index_player_event_holes_on_player_event_id"
@@ -64,6 +66,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_03_003501) do
     t.text "tee_time_windows", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "completed_holes", default: 0
+    t.boolean "round_complete"
+    t.integer "strokes_to_par", default: 0
     t.index ["event_id"], name: "index_player_events_on_event_id"
     t.index ["player_id"], name: "index_player_events_on_player_id"
   end

@@ -1,4 +1,20 @@
-<div class="scorecard-hole">
-  <turbo-frame id="scorecard_hole" src=<%=player_event_hole_path(@current_hole.id)%>>
-  </turbo-frame>
+<div class="scorecard-hole" data-controller="top-nav">
+  <%= render "top_nav" %>
+  <div id="hole_content" data-top-nav-target="hole">
+    <turbo-frame id="scorecard_hole" src=<%=player_event_hole_path(@current_hole.id)%>>
+    </turbo-frame>
+  </div>
+  <div id="leadercard_content" data-top-nav-target="leadercard" class="hidden content-center">
+    <div class="text-3xl font-bold text-left pl-2 py-2 my-2 text-[#076652] tracking-wider" style="text-shadow: 2px 1px 0px #212121; color: #076652;">
+      <%= @player.name %>
+    </div>
+    <%= turbo_stream_from "#{dom_id(@player)}player_scorecard" %>
+    <%= render "player_scorecard", locals: { holes: @holes } %>
+
+    <div class="text-3xl font-bold text-left pl-2 py-2 my-2 text-[#076652] tracking-wider" style="text-shadow: 2px 1px 0px #212121; color: #076652;">
+      LEADERS
+    </div>
+    <%= turbo_stream_from "event_leaders" %>
+    <%= render "event_leaders", locals: { player_event: @player_event } %>
+  </div>
 </div>
