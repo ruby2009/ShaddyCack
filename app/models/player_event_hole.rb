@@ -28,7 +28,7 @@ class PlayerEventHole < ApplicationRecord
   private
 
   def update_hole_state
-    if score > 0
+    if score && score > 0
       self.hole_complete = true
       self.over_par = self.score - self.hole.par
     else

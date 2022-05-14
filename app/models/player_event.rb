@@ -25,6 +25,6 @@ class PlayerEvent < ApplicationRecord
   end
 
   def event_leaders
-    PlayerEvent.where(event_id: self.event_id).where('completed_holes > ?', 0)
+    PlayerEvent.where(event_id: self.event_id).where('completed_holes > ?', 0).order(:strokes_to_par)
   end
 end

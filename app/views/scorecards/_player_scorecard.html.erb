@@ -2,12 +2,14 @@
   <% new_holes = PlayerEventHole.where(id: local_assigns[:hole_ids]).includes(:hole).order("holes.number") %>
 <% end %>
 
-<% holes = local_assigns[:hole_ids] ? new_holes : locals[:holes] %>
+<% hole_count = local_assigns[:hole_ids] ? new_holes.count : locals[:holes].count %>
+<% holes = local_assigns[:hole_ids] ? new_holes.first(9) : locals[:holes].first(9) %>
+<% completed_holes = holes.select{|h| h.hole_complete == true } %>
 
 <div id="player_scorecard">
   <table class="table-fixed mx-auto text-center border-2 border-[#076652]">
     <tbody>
-      <tr id="hole_numbers" class="bg-[#076652] text-orange-50 border-2 border-[#076652]">
+      <tr id="hole_numbers" class="bg-[#076652] text-orange-50 border-2 border-[#076652] font-bold">
         <% holes.each do |hole| %>
           <td class="w-1/12 border-r-2 border-orange-50"><%= hole.hole.number %></td>
         <% end %>
@@ -17,20 +19,65 @@
         <% holes.each do |hole| %>
           <td class="w-1/12 border-r-2 border-[#076652]"><%= hole.hole.yardage %></td>
         <% end %> 
-        <td class="w-1/12"></td>   
+        <td class="w-1/12"><%= holes.map{|hole| hole.hole.yardage.to_i}.sum %></td>   
       </tr>
-      <tr id="scores" class="border-2 border-[#076652] font-bold">
+      <tr id="hole_yardage" class="bg-orange-100 border-2 border-[#076652] font-light">    
+        <% holes.each do |hole| %>
+          <td class="w-1/12 border-r-2 border-[#076652]"><%= hole.hole.par %></td>
+        <% end %> 
+        <td class="w-1/12"><%= holes.map{|hole| hole.hole.par}.sum %></td>   
+      </tr>
+      <tr id="scores" class="border-2 border-[#076652] font-semibold">
         <% holes.each do |hole| %>
           <td class="w-1/12 border-r-2 border-[#076652]"><%= hole.score %></td>
         <% end %>
-        <td class="w-1/12"><%= holes.where(hole_complete: true).map(&:score).sum %></td>
+        <td class="w-1/12"><%= completed_holes.map(&:score).sum %></td>
       </tr>
       <tr id="over_par" class="border-2 border-[#076652] italic">
         <% holes.each do |hole| %>
           <td class="w-1/12 border-r-2 border-[#076652]"><%= score_decorator(hole.over_par) %></td>
         <% end %>
-        <td class="w-1/12"><%= score_decorator(holes.where(hole_complete: true).map(&:over_par).sum) %></td>
+        <td class="w-1/12"><%= score_decorator(completed_holes.map(&:over_par).sum) %></td>
       </tr>
     </tbody>
   </table>
+
+  <% if hole_count > 9 %>
+    <% second_nine = local_assigns[:hole_ids] ? new_holes.last(9) : locals[:holes].last(9) %>
+    <% completed_second_nine_holes = second_nine.select{|h| h.hole_complete == true } %>
+    <table class="table-fixed mx-auto text-center border-2 border-[#076652]">
+      <tbody>
+        <tr id="hole_numbers" class="bg-[#076652] text-orange-50 border-2 border-[#076652] font-bold">
+          <% second_nine.each do |hole| %>
+            <td class="w-1/12 border-r-2 border-orange-50"><%= hole.hole.number %></td>
+          <% end %>
+          <td class="w-1/12"></td>
+        </tr>
+        <tr id="hole_yardage" class="bg-orange-100 border-2 border-[#076652]">    
+          <% second_nine.each do |hole| %>
+            <td class="w-1/12 border-r-2 border-[#076652]"><%= hole.hole.yardage %></td>
+          <% end %> 
+          <td class="w-1/12"><%= second_nine.map{|hole| hole.hole.yardage.to_i}.sum %></td>   
+        </tr>
+        <tr id="hole_yardage" class="bg-orange-100 border-2 border-[#076652] font-light">    
+          <% second_nine.each do |hole| %>
+            <td class="w-1/12 border-r-2 border-[#076652]"><%= hole.hole.par %></td>
+          <% end %> 
+          <td class="w-1/12"><%= second_nine.map{|hole| hole.hole.par}.sum %></td>   
+        </tr>
+        <tr id="scores" class="border-2 border-[#076652] font-semibold">
+          <% second_nine.each do |hole| %>
+            <td class="w-1/12 border-r-2 border-[#076652]"><%= hole.score %></td>
+          <% end %>
+          <td class="w-1/12"><%= completed_second_nine_holes.map(&:score).sum %></td>
+        </tr>
+        <tr id="over_par" class="border-2 border-[#076652] italic">
+          <% second_nine.each do |hole| %>
+            <td class="w-1/12 border-r-2 border-[#076652]"><%= score_decorator(hole.over_par) %></td>
+          <% end %>
+          <td class="w-1/12"><%= score_decorator(completed_second_nine_holes.map(&:over_par).sum) %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
 </div>
