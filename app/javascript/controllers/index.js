@@ -2,10 +2,13 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from './application'
+import { application } from "./application"
 
-import AnnualFormController from './annual_form_controller.js'
-import TopNavController from './top_nav_controller.js'
+import AnnualFormController from "./annual_form_controller.js"
+application.register("annual-form", AnnualFormController)
 
-application.register('annual-form', AnnualFormController)
-application.register('top-nav', TopNavController)
+import GeolocationController from "./geolocation_controller.js"
+application.register("geolocation", GeolocationController)
+
+import TopNavController from "./top_nav_controller.js"
+application.register("top-nav", TopNavController)

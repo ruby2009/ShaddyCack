@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_12_220841) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_16_172125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_220841) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "gps_enabled"
   end
 
   create_table "events", force: :cascade do |t|
@@ -41,6 +42,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_220841) do
     t.datetime "updated_at", null: false
     t.integer "number"
     t.integer "handicap"
+    t.string "green_long"
+    t.string "green_lat"
     t.index ["course_id"], name: "index_holes_on_course_id"
   end
 
