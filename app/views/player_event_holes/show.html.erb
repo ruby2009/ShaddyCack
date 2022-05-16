@@ -7,10 +7,19 @@
       <span class="text-xl italic"> - Par <%= @player_event_hole.hole.par %></span>
     </div>
 
-    <div class="text xl">
-      <%= @player_event_hole.hole.yardage %> yards
-    </div>
-
+    <% if @player_event_hole.event.course.gps_enabled == true %>
+      <span 
+        data-controller="geolocation"
+        data-geolocation-target="distance"
+        data-geolocation-long-value=<%= @player_event_hole.hole.green_long %>
+        data-geolocation-lat-value=<%= @player_event_hole.hole.green_lat %>>
+        <%= @player_event_hole.hole.yardage %> yards to hole
+      </span>
+    <% else %>
+      <div class="text xl">
+        <%= @player_event_hole.hole.yardage %> yards
+      </div>
+    <% end %>
   </div>
 
   <turbo-frame id="scorecard_hole_form">
