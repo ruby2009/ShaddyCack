@@ -8811,7 +8811,6 @@
       let lat1 = position.coords.latitude;
       let lon2 = this.longValue;
       let lat2 = parseFloat(this.latValue);
-      console.log("ran");
       var R = 6371;
       var dLat = (lat2 - lat1) * (Math.PI / 180);
       var dLon = (lon2 - lon1) * (Math.PI / 180);

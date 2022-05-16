@@ -40,7 +40,6 @@ export default class extends Controller {
     let lat1 = position.coords.latitude
     let lon2 = this.longValue
     let lat2 = parseFloat(this.latValue)
-    console.log("ran")
 
     var R = 6371; // Radius of the earth in km
     var dLat = ((lat2-lat1) * (Math.PI/180));  // deg2rad below
