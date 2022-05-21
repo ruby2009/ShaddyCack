@@ -53,11 +53,17 @@ gem "tailwindcss-rails"
 
 gem "foreman"
 
+# send text messages
+gem 'twilio-ruby'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+
+# background job gem
+gem 'good_job'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -65,6 +71,7 @@ group :development, :test do
   gem "pry"
   gem "awesome_print"
   gem "rspec-rails"
+  gem "dotenv-rails"
 end
 
 group :development do

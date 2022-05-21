@@ -7,6 +7,11 @@ class Player < ApplicationRecord
   has_many :player_event_holes
   has_many :holes, through: :player_event_holes
 
+  def twilio_style_phone_number
+    dehyphen = phone_number.gsub("-", "")
+    dehyphen.prepend("+1")
+  end
+
   private
 
   PHONE_NUMBER_REGEX = /^\(?[\d]{3}\)?[\s|-]?[\d]{3}-?[\d]{4}$/

@@ -6,6 +6,6 @@ class Event < ApplicationRecord
   has_many :holes, through: :player_event_holes
 
   def generate_scorecards
-    # logic here to loop through PlayerEvents, generate scorecard link, and send text message
+    SendEventScorecardsJob.perform_later(id)
   end
 end
