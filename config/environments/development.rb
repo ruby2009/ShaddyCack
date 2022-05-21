@@ -1,5 +1,7 @@
 require "active_support/core_ext/integer/time"
 
+Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -41,6 +43,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { :host => "localhost" }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -65,7 +69,6 @@ Rails.application.configure do
   config.assets.digest = false
 
   config.default_url_options = { host: "localhost" }
-
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

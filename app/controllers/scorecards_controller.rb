@@ -12,6 +12,6 @@ class ScorecardsController < ApplicationController
   private
 
   def scorecard_params
-    params.require(:magic_link)
+    params.require(:id)
   end
 end
