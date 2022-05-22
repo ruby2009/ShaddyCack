@@ -10,6 +10,7 @@ class SendScorecardJob < ApplicationJob
     course_name = event.course.name
     player_event = PlayerEvent.find_by(player_id: player_id, event_id: event_id)
     message = "Hi #{player.name}, Here's your scorecard for #{event.name} at #{course_name}: #{scorecard_url(id: player_event.to_sgid(for: "sharing").to_s)}"
+    player_event.build_scorecard
 
     account_sid = ENV["TWILIO_ACCOUNT_SSID"]
     auth_token = ENV["TWILIO_AUTH_TOKEN"]
