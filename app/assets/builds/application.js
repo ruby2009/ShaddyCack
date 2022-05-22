@@ -8830,10 +8830,13 @@
   // app/javascript/controllers/top_nav_controller.js
   var top_nav_controller_default = class extends Controller {
     showScore() {
-      console.log("in show score");
       if (this.holeTarget.classList.contains("hidden")) {
         this.holeTarget.classList.remove("hidden");
         this.leadercardTarget.classList.add("hidden");
+      }
+      if (this.leadercardNavTarget.classList.contains("shadow-inner")) {
+        this.leadercardNavTarget.classList.remove("shadow-inner");
+        this.scoreNavTarget.classList.add("shadow-inner");
       }
     }
     showLeaderboard() {
@@ -8841,9 +8844,14 @@
         this.leadercardTarget.classList.remove("hidden");
         this.holeTarget.classList.add("hidden");
       }
+      console.log(this.scoreNavTarget, "score nav?");
+      if (this.scoreNavTarget.classList.contains("shadow-inner")) {
+        this.scoreNavTarget.classList.remove("shadow-inner");
+        this.leadercardNavTarget.classList.add("shadow-inner");
+      }
     }
   };
-  __publicField(top_nav_controller_default, "targets", ["hole", "leadercard"]);
+  __publicField(top_nav_controller_default, "targets", ["hole", "leadercard", "scoreNav", "leadercardNav"]);
 
   // app/javascript/controllers/index.js
   application.register("annual-form", annual_form_controller_default);
