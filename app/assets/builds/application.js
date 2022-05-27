@@ -8818,7 +8818,7 @@
       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       var d = R * c;
       var yards = parseInt(d * 3280.84 / 3);
-      this.distanceTarget.textContent = `${yards} yards to hole`;
+      this.distanceTarget.textContent = `${yards} yards to center`;
     }
   };
   __publicField(geolocation_controller_default, "targets", ["distance"]);
