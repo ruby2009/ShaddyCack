@@ -1,0 +1,36 @@
+<div>
+  <div>
+    <%= link_to "Back", tournaments_path, method: "get" %>
+  </div>
+  <h1 class="text-3xl text-center pt-8 font-bold" style="text-shadow: 2px 1px 0px #212121; color: #076652;"><%= @tournament.name %></h1>
+
+
+  <div class="events-table">
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Event Location</th>
+          <th>Event Start Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The Annual</td>
+          <td>Riverside Par 3</td>
+          <td>May 21, 2023</td>
+        </tr>
+        <tr>
+          <td>The Farm Open</td>
+          <td>Eagle Crek Sycamore</td>
+          <td>June 16, 2023</td>
+        </tr>
+        <tr>
+          <td>The Indy Players</td>
+          <td>The Fort</td>
+          <td>July 18, 2023</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

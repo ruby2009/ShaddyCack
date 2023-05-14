@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_21_020808) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_13_180902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -113,6 +113,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_020808) do
     t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "handicap"
+  end
+
+  create_table "tournament_events", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "tournament_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_tournament_events_on_event_id"
+    t.index ["tournament_id"], name: "index_tournament_events_on_tournament_id"
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "events", "courses"
@@ -123,4 +139,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_020808) do
   add_foreign_key "player_event_holes", "players"
   add_foreign_key "player_events", "events"
   add_foreign_key "player_events", "players"
+  add_foreign_key "tournament_events", "events"
+  add_foreign_key "tournament_events", "tournaments"
 end

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :players, only: [:create]
   resources :scorecards, only: [:show]
   resources :player_event_holes, only: [:index, :show, :edit, :update]
+  resources :tournaments, only: [:index, :show]
 end
