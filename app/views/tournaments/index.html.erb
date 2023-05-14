@@ -1,0 +1,36 @@
+<h1 class="text-3xl text-center pt-8 font-bold" style="text-shadow: 2px 1px 0px #212121; color: #076652;">"A Tradition Like All the Others"</h1>
+
+<div class="logo w-full">
+  <%= image_tag("Removal-58.png", class: "mx-auto") %>
+</div>
+<%
+=begin%>
+ 
+<div class="date-location-header text-orange-50 text-center my-3 py-5" style="background: #076652;">
+  <div class="w-full text-2xl font-bold">
+    <%= @event.name %>
+  </div>
+  <div class="w-full text-xl">
+    <%= @event.startDate.to_time.strftime('%B %e, %Y') %>
+  </div>
+  <div class="w-full text-xl">
+    <%= @event.course.name %>
+  </div>
+</div> 
+<%
+=end%>
+
+<div class="tournament-table">
+  <table class="table-auto">
+    <thead>
+      <tr>Name</tr>
+    </thead>
+    <tbody>
+      <% @tournaments.each do |tourny| %>
+        <tr>
+          <td><%= link_to tourny.name, tournament_path(tourny.id), method: "get", class: "text-7xl inline-block font-bold p-3", style: "text-shadow: 2px 1px 0px #212121; color: #076652;" %></td>
+        <tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
